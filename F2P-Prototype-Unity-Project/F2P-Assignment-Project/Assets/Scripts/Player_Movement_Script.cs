@@ -21,6 +21,10 @@ public class Player_Movement_Script : MonoBehaviour
     private float DodgeCooldownCount;
     public bool isDodging;
 
+    //Aim Variables
+    public Camera cam;
+    Vector2 mousePos;
+
     private void Awake()
     {
         pInput = new Player_Controls();
@@ -32,6 +36,7 @@ public class Player_Movement_Script : MonoBehaviour
         if (DodgeCooldownCount < 0) { DodgeCooldownCount = 0; }
         else if (DodgeCooldownCount > 0) { currentSpeed = moveSpeed / DodgeCooldownCount; }
         else { currentSpeed = moveSpeed; }
+        lookDir();
     }
 
     void FixedUpdate()
@@ -46,6 +51,15 @@ public class Player_Movement_Script : MonoBehaviour
         moveDirection = MoveInput.normalized;
 
         rb.velocity = new Vector2(moveDirection.x * currentSpeed, moveDirection.y * currentSpeed);
+    }
+
+    private void lookDir()
+    {
+        mousePos = cam.ScreenToWorldPoint(pInput.Gameplay.AimDir.ReadValue<Vector2>());
+        Vector2 lookDir = mousePos - rb.position;
+
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
     }
 
     IEnumerator Dodge()
