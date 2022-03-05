@@ -11,12 +11,13 @@ public class Player_Movement_Script : MonoBehaviour
 
     //Speed Variables
     public float moveSpeed = 5f;
+    private float currentSpeed;
     public Rigidbody2D rb;
 
     //Dodge Variables
-    public float DodgeSpeed = 7f;
-    public float DodgeTime;
-    public float DodgeCooldown;
+    public float DodgeSpeed = 10f;
+    public float DodgeTime = 0.3f;
+    public float DodgeCooldown = 10f;
     private float DodgeCooldownCount;
     public bool isDodging;
 
@@ -24,6 +25,13 @@ public class Player_Movement_Script : MonoBehaviour
     {
         pInput = new Player_Controls();
         pInput.Gameplay.Dodge.performed += _ => StartCoroutine(Dodge());
+    }
+
+    private void Update()
+    {
+        if (DodgeCooldownCount < 0) { DodgeCooldownCount = 0; }
+        else if (DodgeCooldownCount > 0) { currentSpeed = moveSpeed / DodgeCooldownCount; }
+        else { currentSpeed = moveSpeed; }
     }
 
     void FixedUpdate()
@@ -37,7 +45,7 @@ public class Player_Movement_Script : MonoBehaviour
         MoveInput = pInput.Gameplay.Movement.ReadValue<Vector2>();
         moveDirection = MoveInput.normalized;
 
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        rb.velocity = new Vector2(moveDirection.x * currentSpeed, moveDirection.y * currentSpeed);
     }
 
     IEnumerator Dodge()
