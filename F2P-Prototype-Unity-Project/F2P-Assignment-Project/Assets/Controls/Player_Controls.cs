@@ -41,6 +41,14 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""BasicAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""2904190a-9356-47b7-bf6e-1eb9ba3e974b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -175,6 +183,17 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                     ""action"": ""Aim Dir"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30f31d05-f4f7-477d-a5e2-55df9b676fb1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""M+K"",
+                    ""action"": ""BasicAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -203,6 +222,7 @@ public class @Player_Controls : IInputActionCollection, IDisposable
         m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
         m_Gameplay_Dodge = m_Gameplay.FindAction("Dodge", throwIfNotFound: true);
         m_Gameplay_AimDir = m_Gameplay.FindAction("Aim Dir", throwIfNotFound: true);
+        m_Gameplay_BasicAttack = m_Gameplay.FindAction("BasicAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -255,6 +275,7 @@ public class @Player_Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Movement;
     private readonly InputAction m_Gameplay_Dodge;
     private readonly InputAction m_Gameplay_AimDir;
+    private readonly InputAction m_Gameplay_BasicAttack;
     public struct GameplayActions
     {
         private @Player_Controls m_Wrapper;
@@ -262,6 +283,7 @@ public class @Player_Controls : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
         public InputAction @Dodge => m_Wrapper.m_Gameplay_Dodge;
         public InputAction @AimDir => m_Wrapper.m_Gameplay_AimDir;
+        public InputAction @BasicAttack => m_Wrapper.m_Gameplay_BasicAttack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +302,9 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                 @AimDir.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAimDir;
                 @AimDir.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAimDir;
                 @AimDir.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAimDir;
+                @BasicAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBasicAttack;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -293,6 +318,9 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                 @AimDir.started += instance.OnAimDir;
                 @AimDir.performed += instance.OnAimDir;
                 @AimDir.canceled += instance.OnAimDir;
+                @BasicAttack.started += instance.OnBasicAttack;
+                @BasicAttack.performed += instance.OnBasicAttack;
+                @BasicAttack.canceled += instance.OnBasicAttack;
             }
         }
     }
@@ -311,5 +339,6 @@ public class @Player_Controls : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnAimDir(InputAction.CallbackContext context);
+        void OnBasicAttack(InputAction.CallbackContext context);
     }
 }

@@ -36,7 +36,6 @@ public class Player_Movement_Script : MonoBehaviour
         if (DodgeCooldownCount < 0) { DodgeCooldownCount = 0; }
         else if (DodgeCooldownCount > 0) { currentSpeed = moveSpeed / DodgeCooldownCount; }
         else { currentSpeed = moveSpeed; }
-        lookDir();
     }
 
     void FixedUpdate()
@@ -51,15 +50,9 @@ public class Player_Movement_Script : MonoBehaviour
         moveDirection = MoveInput.normalized;
 
         rb.velocity = new Vector2(moveDirection.x * currentSpeed, moveDirection.y * currentSpeed);
-    }
-
-    private void lookDir()
-    {
-        mousePos = cam.ScreenToWorldPoint(pInput.Gameplay.AimDir.ReadValue<Vector2>());
-        Vector2 lookDir = mousePos - rb.position;
-
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        float xScale = 1f;
+        if(MoveInput.x == 0.5f) { xScale = 1f; } else if(MoveInput.x == -0.5) { xScale = -1f; }
+        if (MoveInput.x != 0) { transform.localScale = new Vector3(xScale, 1f, 1f); }
     }
 
     IEnumerator Dodge()
