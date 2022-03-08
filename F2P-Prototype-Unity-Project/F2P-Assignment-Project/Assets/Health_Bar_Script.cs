@@ -11,4 +11,10 @@ public class Health_Bar_Script : MonoBehaviour
         slider.maxValue = MaxHealth;
         slider.value = currentHealth;
     }
+
+    public void SetXP(int XP_Current, int XP_Required)
+    {
+        slider.maxValue = XP_Required;
+        slider.value = XP_Current;
+    }
 }

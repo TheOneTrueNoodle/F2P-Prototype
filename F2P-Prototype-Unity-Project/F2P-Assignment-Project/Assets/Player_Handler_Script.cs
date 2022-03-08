@@ -18,6 +18,7 @@ public class Player_Handler_Script : MonoBehaviour
     public TMP_Text XPDisp;
 
     public Health_Bar_Script healthBar;
+    public Health_Bar_Script XPBar;
 
 
     public float LV = 1f;
@@ -40,6 +41,7 @@ public class Player_Handler_Script : MonoBehaviour
 
         //XP
         XPDisp.text = XP_Acquired.ToString() + "/" + XP_Needed.ToString();
+        XPBar.SetXP((int)XP_Acquired, (int)XP_Needed);
 
         //Level
         LVDisp.text = "LV " + LV.ToString();

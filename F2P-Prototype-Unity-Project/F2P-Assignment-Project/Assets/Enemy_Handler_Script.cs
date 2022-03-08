@@ -17,6 +17,7 @@ public class Enemy_Handler_Script : MonoBehaviour
     {
         if(CurrentHealth <= 0)
         {
+            FindObjectOfType<Player_Handler_Script>().XP_Acquired += 20f;
             Destroy(gameObject);
         }
     }
