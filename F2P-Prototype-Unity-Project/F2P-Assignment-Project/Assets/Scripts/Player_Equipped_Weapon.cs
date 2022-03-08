@@ -32,27 +32,10 @@ public class Player_Equipped_Weapon : MonoBehaviour
         CurrentEquippedWeapon.transform.parent = gameObject.transform;
         CurrentEquippedWeapon.transform.position = gameObject.transform.position;
     }
-    void Update()
-    {
-       /* Vector3 bodyToMouseDir = Camera.main.ScreenToWorldPoint(pInput.Gameplay.AimDir.ReadValue<Vector2>()) - body.position;
-        bodyToMouseDir.z = 0;
-        if (CurrentEquippedWeapon.CompareTag("Melee Weapon") && Attacking != true) 
-        {
-            gameObject.transform.position = body.position - (armLength * bodyToMouseDir.normalized);
-            CurrentEquippedWeapon.transform.position = gameObject.transform.position - (CurrentEquippedWeapon.GetComponent<Weapon_Script>().WeaponData.WeaponOffset * bodyToMouseDir.normalized);
-            CurrentEquippedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 180);
-        }
-        else if(Attacking != true)
-        { 
-            gameObject.transform.position = body.position + (armLength * bodyToMouseDir.normalized);
-            CurrentEquippedWeapon.transform.position = gameObject.transform.position + (CurrentEquippedWeapon.GetComponent<Weapon_Script>().WeaponData.WeaponOffset * bodyToMouseDir.normalized);
-            CurrentEquippedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }*/
-    }
 
     private void TriggerAttack()
     {
-        if(CurrentEquippedWeapon.CompareTag("Melee Weapon"))
+        if (CurrentEquippedWeapon.CompareTag("Melee Weapon"))
         {
             AttackQueue.Enqueue(MeleeAttack());
         }
@@ -62,17 +45,17 @@ public class Player_Equipped_Weapon : MonoBehaviour
     {
         Attacking = true;
         Anim.Play("Melee_Attack_Animation");
+
         while(Anim.GetCurrentAnimatorStateInfo(0).IsName("Melee_Attack_Animation"))
         {
             yield return null;
         }
-
+        yield return new WaitForSeconds(0.2f);
         Attacking = false;
     }
 
     IEnumerator RangeAttack()
     {
-
         Anim.Play("Melee_Attack_Animation");
         Attacking = false;
         yield return null;

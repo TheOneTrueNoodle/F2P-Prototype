@@ -23,7 +23,6 @@ public class Player_Movement_Script : MonoBehaviour
 
     //Aim Variables
     public Camera cam;
-    Vector2 mousePos;
 
     private void Awake()
     {
@@ -74,6 +73,7 @@ public class Player_Movement_Script : MonoBehaviour
             isDodging = false;
         }
     }
+
     private void OnEnable()
     {
         pInput.Gameplay.Enable();

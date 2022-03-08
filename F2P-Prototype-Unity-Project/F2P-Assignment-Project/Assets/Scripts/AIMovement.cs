@@ -10,6 +10,10 @@ public class AIMovement : MonoBehaviour
 
     private void Start()
     {
+        if(target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
