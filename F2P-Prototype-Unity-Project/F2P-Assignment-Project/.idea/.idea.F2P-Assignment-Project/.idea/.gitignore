@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/.idea.F2P-Assignment-Project.iml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\Users\Mark Lambe\Documents\GitHub\F2P-Prototype\F2P-Prototype-Unity-Project\F2P-Assignment-Project\.idea\.idea.F2P-Assignment-Project\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
