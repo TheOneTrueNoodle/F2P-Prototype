@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.AI;
 public class AIMovement : MonoBehaviour
 {
     [SerializeField] Transform target;
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class AIMovement : MonoBehaviour
         agent.updateUpAxis = false;
     }
 
-    void Update()
+    private void Update()
     {
         agent.SetDestination(target.position);
     }
