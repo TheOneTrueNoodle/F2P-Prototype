@@ -24,6 +24,12 @@ public class Player_Movement_Script : MonoBehaviour
     //Aim Variables
     public Camera cam;
 
+    //Sprite Variables
+    public GameObject PlayerSprite;
+
+    //Pause Variable
+    public bool isPaused;
+
     private void Awake()
     {
         pInput = new Player_Controls();
@@ -35,6 +41,16 @@ public class Player_Movement_Script : MonoBehaviour
         if (DodgeCooldownCount < 0) { DodgeCooldownCount = 0; }
         else if (DodgeCooldownCount > 0) { currentSpeed = moveSpeed / DodgeCooldownCount; }
         else { currentSpeed = moveSpeed; }
+
+        //Sprite Orientation
+        if (pInput.Gameplay.AimDir.ReadValue<Vector2>().x < Camera.main.WorldToScreenPoint(gameObject.transform.position).x && isPaused != true)
+        {
+            PlayerSprite.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (isPaused != true)
+        {
+            PlayerSprite.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void FixedUpdate()
@@ -49,9 +65,6 @@ public class Player_Movement_Script : MonoBehaviour
         moveDirection = MoveInput.normalized;
 
         rb.velocity = new Vector2(moveDirection.x * currentSpeed, moveDirection.y * currentSpeed);
-        float xScale = 1f;
-        if(MoveInput.x == 0.5f) { xScale = 1f; } else if(MoveInput.x == -0.5) { xScale = -1f; }
-        if (MoveInput.x != 0) { transform.localScale = new Vector3(xScale, 1f, 1f); }
     }
 
     IEnumerator Dodge()

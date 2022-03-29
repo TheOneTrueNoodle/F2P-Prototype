@@ -5,6 +5,10 @@ using TMPro;
 
 public class Player_Handler_Script : MonoBehaviour
 {
+    //Variables for Controls
+    public Player_Controls pInput;
+
+    //HP, Damage, and increase bonus
     public float MaxHealth = 10f;
     [HideInInspector] public float CurrentHealth;
     public float CurrentDamage;
@@ -26,6 +30,11 @@ public class Player_Handler_Script : MonoBehaviour
     [HideInInspector] public float XP_Acquired = 0f;
     public float XP_Scale = 1.2f;
 
+    private void Awake()
+    {
+        pInput = new Player_Controls();
+    }
+
     private void Start()
     {
         XP_Needed = (float)(LV * 100 * XP_Scale);
@@ -45,8 +54,6 @@ public class Player_Handler_Script : MonoBehaviour
 
         //Level
         LVDisp.text = "LV " + LV.ToString();
-
-
 
         if (XP_Acquired >= XP_Needed)
         {
@@ -80,6 +87,7 @@ public class Player_Handler_Script : MonoBehaviour
     public void LevelUp()
     {
         Time.timeScale = 0f;
+        GetComponentInChildren<Player_Movement_Script>().isPaused = true;
         LevelUI.gameObject.SetActive(true);
     }
 
@@ -94,6 +102,7 @@ public class Player_Handler_Script : MonoBehaviour
 
         LevelUI.gameObject.SetActive(false);
         Time.timeScale = 1f;
+        GetComponentInChildren<Player_Movement_Script>().isPaused = false;
         CurrentDamage = CurrentDamageBonus + FindObjectOfType<Player_Equipped_Weapon>().CurrentEquippedWeapon.GetComponent<Weapon_Script>().WeaponData.Damage;
     }
 }
