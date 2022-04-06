@@ -11,18 +11,22 @@ public class Player_Equipped_Weapon : MonoBehaviour
 
     public Transform body;
     public float armLength = 0.5f;
+    public float AttackCooldown = 0.2f;
 
     private Animator Anim;
     public bool Attacking;
 
     private Queue<IEnumerator> AttackQueue = new Queue<IEnumerator>();
 
+    public bool AtkButtonHeld;
+
 
     private void Awake()
     {
         Anim = this.GetComponent<Animator>();
         pInput = new Player_Controls();
-        pInput.Gameplay.BasicAttack.performed += _ => TriggerAttack();
+        pInput.Gameplay.BasicAttack.performed += _ => AtkButtonHeld = true;
+        pInput.Gameplay.BasicAttack.canceled += _ => AtkButtonHeld = false;
     }
 
     void Start()
@@ -33,30 +37,65 @@ public class Player_Equipped_Weapon : MonoBehaviour
         CurrentEquippedWeapon.transform.position = gameObject.transform.position;
     }
 
+    private void Update()
+    {
+        if(AtkButtonHeld == true && Attacking != true)
+        {
+            TriggerAttack();
+        }
+        else if(Attacking == true)
+        {
+            AttackQueue.Clear();
+            AttackQueue.Enqueue(EndAttack());
+        }
+    }
+
     private void TriggerAttack()
     {
+        Attacking = true;
         if (CurrentEquippedWeapon.CompareTag("Melee Weapon"))
         {
             AttackQueue.Enqueue(MeleeAttack());
+        }
+        else if (CurrentEquippedWeapon.CompareTag("Range Weapon"))
+        {
+            AttackQueue.Enqueue(RangeAttack());
         }
     }
 
     IEnumerator MeleeAttack()
     {
-        Attacking = true;
         Anim.Play("Melee_Attack_Animation");
 
-        while(Anim.GetCurrentAnimatorStateInfo(0).IsName("Melee_Attack_Animation"))
+        while (Anim.GetCurrentAnimatorStateInfo(0).IsName("Melee_Attack_Animation"))
         {
             yield return null;
         }
-        yield return new WaitForSeconds(0.2f);
-        Attacking = false;
+        yield return new WaitForSeconds(AttackCooldown);
+        if(AtkButtonHeld == true)
+        {
+            AttackQueue.Enqueue(MeleeAttack());
+        }
     }
 
     IEnumerator RangeAttack()
     {
         Anim.Play("Melee_Attack_Animation");
+
+        while (Anim.GetCurrentAnimatorStateInfo(0).IsName("Melee_Attack_Animation"))
+        {
+            yield return null;
+        }
+        CurrentEquippedWeapon.GetComponentInChildren<Ranged_Projectile_Spawner>().FireProjectile();
+        yield return new WaitForSeconds(AttackCooldown);
+        if (AtkButtonHeld == true)
+        {
+            AttackQueue.Enqueue(RangeAttack());
+        }
+    }
+
+    IEnumerator EndAttack()
+    {
         Attacking = false;
         yield return null;
     }
