@@ -648,7 +648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1964610492}
+      - m_Target: {fileID: 770504345}
         m_TargetAssemblyTypeName: Pause_menu, Assembly-CSharp
         m_MethodName: ExitLevel
         m_Mode: 1
@@ -859,6 +859,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d95582bf2a4be2419eab352f03d05a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseScreen: {fileID: 1500268490}
+  gameUI: {fileID: 2065377143}
+--- !u!114 &770504345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770504341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183f6bf5eb8b87b448b7d598e34ee8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1500268490}
@@ -13377,7 +13391,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1964610492}
+      - m_Target: {fileID: 770504345}
         m_TargetAssemblyTypeName: Pause_menu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -18840,7 +18854,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1964610492}
+      - m_Target: {fileID: 770504345}
         m_TargetAssemblyTypeName: Pause_menu, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
