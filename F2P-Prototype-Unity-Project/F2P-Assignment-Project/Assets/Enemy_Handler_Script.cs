@@ -8,14 +8,27 @@ public class Enemy_Handler_Script : MonoBehaviour
     public float MaxHealth = 3f;
     public float CurrentHealth = 1f;
 
+    public Sprite[] SpriteOptions;
+
     private void Start()
     {
         CurrentHealth = MaxHealth;
+        int Skin = Random.Range(0, SpriteOptions.Length);
+        GetComponent<SpriteRenderer>().sprite = SpriteOptions[Skin];
     }
 
     private void Update()
     {
-        if(CurrentHealth <= 0)
+        if (Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position).x < Camera.main.WorldToScreenPoint(gameObject.transform.position).x && FindObjectOfType<Player_Movement_Script>().isPaused != true)
+        {
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (FindObjectOfType<Player_Movement_Script>().isPaused != true)
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        if (CurrentHealth <= 0)
         {
             FindObjectOfType<Player_Handler_Script>().XP_Acquired += 20f;
             Destroy(gameObject);

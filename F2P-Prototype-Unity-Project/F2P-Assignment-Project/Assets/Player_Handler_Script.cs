@@ -17,6 +17,12 @@ public class Player_Handler_Script : MonoBehaviour
 
     //UI Variables
     public Canvas LevelUI;
+
+    public GameObject HealthButton;
+    public GameObject DamageButton;
+    public GameObject MeleeButton;
+    public GameObject RangeButton;
+
     public TMP_Text HPDisp;
     public TMP_Text LVDisp;
     public TMP_Text XPDisp;
@@ -24,11 +30,15 @@ public class Player_Handler_Script : MonoBehaviour
     public Health_Bar_Script healthBar;
     public Health_Bar_Script XPBar;
 
-
     public float LV = 1f;
     [HideInInspector] public float XP_Needed;
     [HideInInspector] public float XP_Acquired = 0f;
     public float XP_Scale = 1.2f;
+
+    public Player_Equipped_Weapon PEW;
+    public GameObject MeleeWeapon;
+    public GameObject RangeWeapon;
+    public GameObject Stick;
 
     private void Awake()
     {
@@ -67,9 +77,27 @@ public class Player_Handler_Script : MonoBehaviour
         }
     }
 
+    public void ChooseMelee()
+    {
+        PEW.CurrentEquippedWeapon = MeleeWeapon;
+        MeleeWeapon.SetActive(true);
+        RangeWeapon.SetActive(false);
+        Stick.SetActive(false);
+        FinishLevelUp();
+    }
+
+    public void ChooseRange()
+    {
+        PEW.CurrentEquippedWeapon = RangeWeapon;
+        RangeWeapon.SetActive(true);
+        MeleeWeapon.SetActive(false);
+        Stick.SetActive(false);
+        FinishLevelUp();
+    }
+
     public void IncreaseHealth()
     {
-        MaxHealth += IncreaseBonus;
+        MaxHealth += IncreaseBonus * 2f;
         FinishLevelUp();
     }
 
@@ -88,7 +116,19 @@ public class Player_Handler_Script : MonoBehaviour
     {
         Time.timeScale = 0f;
         GetComponentInChildren<Player_Movement_Script>().isPaused = true;
-        LevelUI.gameObject.SetActive(true);
+
+        if (LV == 1)
+        {
+            LevelUI.gameObject.SetActive(true);
+            MeleeButton.SetActive(true);
+            RangeButton.SetActive(true);
+        }
+        else
+        {
+            LevelUI.gameObject.SetActive(true);
+            DamageButton.SetActive(true);
+            HealthButton.SetActive(true);
+        }
     }
 
     public void FinishLevelUp()
@@ -101,6 +141,11 @@ public class Player_Handler_Script : MonoBehaviour
         CurrentHealth = MaxHealth;
 
         LevelUI.gameObject.SetActive(false);
+        MeleeButton.SetActive(false);
+        RangeButton.SetActive(false);
+        DamageButton.SetActive(false);
+        HealthButton.SetActive(false);
+
         Time.timeScale = 1f;
         GetComponentInChildren<Player_Movement_Script>().isPaused = false;
         CurrentDamage = CurrentDamageBonus + FindObjectOfType<Player_Equipped_Weapon>().CurrentEquippedWeapon.GetComponent<Weapon_Script>().WeaponData.Damage;
