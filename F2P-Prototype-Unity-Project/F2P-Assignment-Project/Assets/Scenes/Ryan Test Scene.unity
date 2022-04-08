@@ -7952,6 +7952,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 552447814}
+    - target: {fileID: 8309288647522114219, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8309288647890723490, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
       propertyPath: GoldDisp
       value: 
@@ -8003,6 +8007,10 @@ PrefabInstance:
     - target: {fileID: 8309288647890723492, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
       propertyPath: m_Name
       value: GoldManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309288647890723492, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
+      propertyPath: m_TagString
+      value: ShopUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
