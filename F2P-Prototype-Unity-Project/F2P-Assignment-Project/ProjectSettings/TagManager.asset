@@ -7,6 +7,7 @@ TagManager:
   - Melee Weapon
   - Range Weapon
   - Enemy
+  - ShopUI
   layers:
   - Default
   - TransparentFX

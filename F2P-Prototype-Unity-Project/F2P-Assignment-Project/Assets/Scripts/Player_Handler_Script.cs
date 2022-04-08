@@ -135,7 +135,7 @@ public class Player_Handler_Script : MonoBehaviour
     {
         LV++;
 
-        XP_Acquired = 0;
+        XP_Acquired -= XP_Needed;
         XP_Needed = (float)(LV * 100 * XP_Scale);
 
         CurrentHealth = MaxHealth;

@@ -8,6 +8,8 @@ public class Pause_Game : MonoBehaviour
 
     public GameObject pauseScreen;
     public GameObject gameUI;
+    public GameObject gameUIp2;
+
     private void Awake()
     {
         pInput = new Player_Controls();
@@ -17,8 +19,10 @@ public class Pause_Game : MonoBehaviour
     private void pauseGame()
     {
         Time.timeScale = 0;
+        FindObjectOfType<Player_Movement_Script>().isPaused = true;
         pauseScreen.SetActive(true);
         gameUI.SetActive(false);
+        gameUIp2.SetActive(false);
     }
     private void OnEnable()
     {

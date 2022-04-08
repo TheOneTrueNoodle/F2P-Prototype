@@ -57,6 +57,14 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""64c1abf3-b761-4165-ba5e-1308b9ab4ba7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -213,6 +221,17 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                     ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb028e09-1ea8-4856-91e6-dff2a8b99b93"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""M+K"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -243,6 +262,7 @@ public class @Player_Controls : IInputActionCollection, IDisposable
         m_Gameplay_AimDir = m_Gameplay.FindAction("Aim Dir", throwIfNotFound: true);
         m_Gameplay_BasicAttack = m_Gameplay.FindAction("BasicAttack", throwIfNotFound: true);
         m_Gameplay_PauseGame = m_Gameplay.FindAction("PauseGame", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,6 +317,7 @@ public class @Player_Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_AimDir;
     private readonly InputAction m_Gameplay_BasicAttack;
     private readonly InputAction m_Gameplay_PauseGame;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @Player_Controls m_Wrapper;
@@ -306,6 +327,7 @@ public class @Player_Controls : IInputActionCollection, IDisposable
         public InputAction @AimDir => m_Wrapper.m_Gameplay_AimDir;
         public InputAction @BasicAttack => m_Wrapper.m_Gameplay_BasicAttack;
         public InputAction @PauseGame => m_Wrapper.m_Gameplay_PauseGame;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +352,9 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                 @PauseGame.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseGame;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -349,6 +374,9 @@ public class @Player_Controls : IInputActionCollection, IDisposable
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -369,5 +397,6 @@ public class @Player_Controls : IInputActionCollection, IDisposable
         void OnAimDir(InputAction.CallbackContext context);
         void OnBasicAttack(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
