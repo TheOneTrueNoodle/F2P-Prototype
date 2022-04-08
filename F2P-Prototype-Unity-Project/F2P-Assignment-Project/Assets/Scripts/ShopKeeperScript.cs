@@ -20,6 +20,7 @@ public class ShopKeeperScript : MonoBehaviour
 
     public void Start()
     {
+
     }
 
     public void OpenShop()
