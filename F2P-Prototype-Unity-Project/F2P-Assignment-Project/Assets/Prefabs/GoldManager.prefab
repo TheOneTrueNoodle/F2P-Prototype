@@ -917,6 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldCount: 0
   GoldDisp: {fileID: 0}
+  UI: {fileID: 8309288647522114219}
 --- !u!1 &8309288648284376920
 GameObject:
   m_ObjectHideFlags: 0
