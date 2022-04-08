@@ -11,6 +11,8 @@ public class SpawnEnemyScript : MonoBehaviour
 
     private Queue<IEnumerator> AttackQueue = new Queue<IEnumerator>();
 
+    public float Delay = 2f;
+
     private void Start()
     {
         StartCoroutine(CoroutineCoordinator());
@@ -19,7 +21,7 @@ public class SpawnEnemyScript : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(Delay);
 
         int SpawnType = Random.Range(1, 100);
 
