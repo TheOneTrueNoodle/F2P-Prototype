@@ -5774,7 +5774,7 @@ MonoBehaviour:
     WeaponType: 
     WeaponOffset: 0
     Damage: 2
-    attackTime: 1
+    attackTime: 2
 --- !u!4 &589687720
 Transform:
   m_ObjectHideFlags: 0
@@ -6990,9 +6990,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseEnemy: {fileID: 3722395195000949904, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
-  BossEnemy: {fileID: 0}
-  MiniEnemy: {fileID: 0}
-  GoldEnemy: {fileID: 0}
+  BossEnemy: {fileID: 1786380771}
+  MiniEnemy: {fileID: 1647812726}
+  GoldEnemy: {fileID: 1952650470}
   Delay: 2
 --- !u!4 &1253027957
 Transform:
@@ -7215,6 +7215,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
+      propertyPath: Damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
+      propertyPath: MaxHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
+      propertyPath: CurrentHealth
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
 --- !u!1 &1438471384
@@ -7364,6 +7376,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561247987}
   m_CullTransparentMesh: 1
+--- !u!1 &1647812726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4118078390640023620, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+  m_PrefabInstance: {fileID: 4118078390072260658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1654760548
 GameObject:
   m_ObjectHideFlags: 0
@@ -7549,10 +7566,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760757383334340488, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340488, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 760757383334340489, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 8620402692294314161}
+    - target: {fileID: 760757383334340490, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_Name
+      value: GoldEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: MaxHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: XPMaxRange
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: XPMinRange
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: CurrentHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: SpriteOptions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: SpriteOptions.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: a4e9f26aa9140374eb16db8c4fa481c1, type: 3}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: SpriteOptions.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: SpriteOptions.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4118078390640023620, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: m_Name
       value: Gold Enemy
@@ -7562,12 +7623,20 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4118078390640023621, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118078390640023621, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118078390640023621, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.607084
+      value: 11.49
       objectReference: {fileID: 0}
     - target: {fileID: 4118078390640023621, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26380277
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: 4118078390640023621, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10580,6 +10649,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1786380771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 19831251952152020, guid: 9c9b1efa2bb04fe4d8f9fda2852de3d2, type: 3}
+  m_PrefabInstance: {fileID: 19831252395043895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1788620256
 GameObject:
   m_ObjectHideFlags: 0
@@ -10891,6 +10965,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892821277}
   m_CullTransparentMesh: 1
+--- !u!1 &1952650470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4118078390640023620, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+  m_PrefabInstance: {fileID: 1670808429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994003753
 GameObject:
   m_ObjectHideFlags: 0
@@ -11149,6 +11228,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 8620402692294314161}
+    - target: {fileID: 3742190979323426476, guid: 9c9b1efa2bb04fe4d8f9fda2852de3d2, type: 3}
+      propertyPath: Damage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c9b1efa2bb04fe4d8f9fda2852de3d2, type: 3}
 --- !u!224 &703752219632568118
@@ -11245,13 +11328,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 760757383334340488, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
-      propertyPath: m_BaseOffset
+      propertyPath: m_Speed
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340488, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 760757383334340489, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 8620402692294314161}
+    - target: {fileID: 760757383334340490, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: m_Name
+      value: MiniEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: MaxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 760757383334340492, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
+      propertyPath: CurrentHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4118078390640023620, guid: 5c03517518c8463449f18346d5b076dc, type: 3}
       propertyPath: m_Name
       value: Mini Enemy

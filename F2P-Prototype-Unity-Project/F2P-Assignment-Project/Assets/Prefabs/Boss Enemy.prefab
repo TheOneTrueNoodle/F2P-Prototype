@@ -44,7 +44,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722395195000949906, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
       propertyPath: m_Speed
-      value: 1.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3722395195000949907, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
       propertyPath: target
@@ -104,7 +104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
       propertyPath: Damage
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
       propertyPath: MaxHealth

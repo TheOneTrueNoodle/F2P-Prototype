@@ -33,7 +33,7 @@ public class Enemy_Handler_Script : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            float XPDrop = Random.Range(XPMaxRange, XPMinRange);
+            int XPDrop = Random.Range((int)XPMaxRange, (int)XPMinRange);
             FindObjectOfType<Player_Handler_Script>().XP_Acquired += XPDrop;
             Destroy(gameObject);
         }

@@ -149,10 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf77a99db7600864b89cf0e949578d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
-  MaxHealth: 3
-  CurrentHealth: 3
+  Damage: 2
+  MaxHealth: 4
+  CurrentHealth: 4
   SpriteOptions:
   - {fileID: 21300000, guid: dbc1bc4519021004885d1df5d1a26a39, type: 3}
   - {fileID: 21300000, guid: 7481312c9bf523d47ac8f9ffb85c5292, type: 3}
   - {fileID: 21300000, guid: b7c9228b35a92b24480a0664bc890b28, type: 3}
+  XPMaxRange: 30
+  XPMinRange: 15
