@@ -119,6 +119,14 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
+      propertyPath: GoldMaxRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
+      propertyPath: GoldMinRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722395195000949910, guid: 2568e8a401f31c54e81175dbd2446305, type: 3}
       propertyPath: CurrentHealth
       value: 9
       objectReference: {fileID: 0}

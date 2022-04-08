@@ -13,6 +13,9 @@ public class Enemy_Handler_Script : MonoBehaviour
     public float XPMaxRange = 30f;
     public float XPMinRange = 15f;
 
+    public float GoldMaxRange = 5f;
+    public float GoldMinRange = 1f;
+
     private void Start()
     {
         CurrentHealth = MaxHealth;
@@ -34,7 +37,9 @@ public class Enemy_Handler_Script : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             int XPDrop = Random.Range((int)XPMaxRange, (int)XPMinRange);
+            int GoldDrop = Random.Range((int)GoldMaxRange, (int)GoldMinRange);
             FindObjectOfType<Player_Handler_Script>().XP_Acquired += XPDrop;
+            FindObjectOfType<GoldManager>().GoldCount += GoldDrop;
             Destroy(gameObject);
         }
     }
