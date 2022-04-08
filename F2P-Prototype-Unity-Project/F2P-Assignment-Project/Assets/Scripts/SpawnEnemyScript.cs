@@ -7,6 +7,7 @@ public class SpawnEnemyScript : MonoBehaviour
 
     public GameObject BaseEnemy;
     public GameObject BossEnemy;
+    public GameObject MiniEnemy;
     public GameObject GoldEnemy;
 
     private Queue<IEnumerator> AttackQueue = new Queue<IEnumerator>();
@@ -25,9 +26,9 @@ public class SpawnEnemyScript : MonoBehaviour
 
         int SpawnType = Random.Range(1, 100);
 
-        if(SpawnType <= 111)
+        if(SpawnType <= 25)
         {
-            int Number = Random.Range(2, 4);
+            int Number = Random.Range(2, 5);
             for(int i = 0; i < Number; i++)
             {
                 Vector3 Pos = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
@@ -45,15 +46,12 @@ public class SpawnEnemyScript : MonoBehaviour
         }
         else if(SpawnType > 50 && SpawnType <= 90)
         {
-            int Number = Random.Range(2, 4);
+            int Number = Random.Range(3, 7);
             for (int i = 0; i < Number; i++)
             {
                 Vector3 Posi = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
-                Instantiate(BaseEnemy, Posi, Quaternion.identity);
+                Instantiate(MiniEnemy, Posi, Quaternion.identity);
             }
-
-            Vector3 Pos = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
-            Instantiate(BossEnemy, Pos, Quaternion.identity);
         }
         else if(SpawnType > 90)
         {

@@ -10,6 +10,9 @@ public class Enemy_Handler_Script : MonoBehaviour
 
     public Sprite[] SpriteOptions;
 
+    public float XPMaxRange = 30f;
+    public float XPMinRange = 15f;
+
     private void Start()
     {
         CurrentHealth = MaxHealth;
@@ -30,7 +33,8 @@ public class Enemy_Handler_Script : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            FindObjectOfType<Player_Handler_Script>().XP_Acquired += 20f;
+            float XPDrop = Random.Range(XPMaxRange, XPMinRange);
+            FindObjectOfType<Player_Handler_Script>().XP_Acquired += XPDrop;
             Destroy(gameObject);
         }
     }
