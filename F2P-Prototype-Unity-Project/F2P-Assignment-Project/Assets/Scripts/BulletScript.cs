@@ -30,7 +30,7 @@ public class BulletScript : MonoBehaviour
             collision.gameObject.GetComponent<Enemy_Handler_Script>().TakeDamage(CurrentDMG);
             Destroy(gameObject);
         }
-        else
+        else if(collision.gameObject.CompareTag("Walls"))
         {
             Destroy(gameObject);
         }

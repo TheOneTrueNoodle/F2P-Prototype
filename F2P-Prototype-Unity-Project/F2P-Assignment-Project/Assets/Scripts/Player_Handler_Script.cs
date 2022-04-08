@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Player_Handler_Script : MonoBehaviour
@@ -31,8 +32,8 @@ public class Player_Handler_Script : MonoBehaviour
     public Health_Bar_Script XPBar;
 
     public float LV = 1f;
-    [HideInInspector] public float XP_Needed;
-    [HideInInspector] public float XP_Acquired = 0f;
+    [HideInInspector] public int XP_Needed;
+    [HideInInspector] public int XP_Acquired = 0;
     public float XP_Scale = 1.2f;
 
     public Player_Equipped_Weapon PEW;
@@ -47,7 +48,7 @@ public class Player_Handler_Script : MonoBehaviour
 
     private void Start()
     {
-        XP_Needed = (float)(LV * 100 * XP_Scale);
+        XP_Needed = (int)(LV * 100 * XP_Scale);
         CurrentHealth = MaxHealth;
         CurrentDamage = CurrentDamageBonus + FindObjectOfType<Player_Equipped_Weapon>().CurrentEquippedWeapon.GetComponent<Weapon_Script>().WeaponData.Damage;
     }
@@ -73,7 +74,7 @@ public class Player_Handler_Script : MonoBehaviour
         if(CurrentHealth <= 0)
         {
             //GG WP SOOON
-            Destroy(gameObject);
+            SceneManager.LoadScene("ShopScene", LoadSceneMode.Single);
         }
     }
 
@@ -97,7 +98,7 @@ public class Player_Handler_Script : MonoBehaviour
 
     public void IncreaseHealth()
     {
-        MaxHealth += IncreaseBonus * 2f;
+        MaxHealth += IncreaseBonus * 4f;
         FinishLevelUp();
     }
 
@@ -136,7 +137,7 @@ public class Player_Handler_Script : MonoBehaviour
         LV++;
 
         XP_Acquired -= XP_Needed;
-        XP_Needed = (float)(LV * 100 * XP_Scale);
+        XP_Needed = (int)(LV * 100 * XP_Scale);
 
         CurrentHealth = MaxHealth;
 

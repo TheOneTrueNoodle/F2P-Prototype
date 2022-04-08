@@ -14,6 +14,8 @@ public class SpawnEnemyScript : MonoBehaviour
 
     public float Delay = 2f;
 
+    public GameObject[] SpawnPoints;
+
     private void Start()
     {
         StartCoroutine(CoroutineCoordinator());
@@ -31,33 +33,37 @@ public class SpawnEnemyScript : MonoBehaviour
             if (SpawnType <= 25)
             {
                 int Number = Random.Range(2, 5);
+                int Where = Random.Range(0, SpawnPoints.Length);
                 for (int i = 0; i < Number; i++)
                 {
-                    Vector3 Pos = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
+                    Vector3 Pos = new Vector2(SpawnPoints[Where].transform.position.x + Random.Range(-4, 4), SpawnPoints[Where].transform.position.y + Random.Range(-4, 4));
                     Instantiate(BaseEnemy, Pos, Quaternion.identity);
                 }
             }
             else if (SpawnType > 25 && SpawnType <= 50)
             {
                 int Number = Random.Range(1, 2);
+                int Where = Random.Range(0, SpawnPoints.Length);
                 for (int i = 0; i < Number; i++)
                 {
-                    Vector3 Pos = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
+                    Vector3 Pos = new Vector2(SpawnPoints[Where].transform.position.x + Random.Range(-4, 4), SpawnPoints[Where].transform.position.y + Random.Range(-4, 4));
                     Instantiate(BossEnemy, Pos, Quaternion.identity);
                 }
             }
             else if (SpawnType > 50 && SpawnType <= 90)
             {
                 int Number = Random.Range(3, 7);
+                int Where = Random.Range(0, SpawnPoints.Length);
                 for (int i = 0; i < Number; i++)
                 {
-                    Vector3 Posi = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
+                    Vector3 Posi = new Vector2(SpawnPoints[Where].transform.position.x + Random.Range(-4, 4), SpawnPoints[Where].transform.position.y + Random.Range(-4, 4));
                     Instantiate(MiniEnemy, Posi, Quaternion.identity);
                 }
             }
             else if (SpawnType > 90)
             {
-                Vector3 Pos = new Vector2(gameObject.transform.position.x + Random.Range(-4, 4), gameObject.transform.position.y + Random.Range(-4, 4));
+                int Where = Random.Range(0, SpawnPoints.Length);
+                Vector3 Pos = new Vector2(SpawnPoints[Where].transform.position.x + Random.Range(-4, 4), SpawnPoints[Where].transform.position.y + Random.Range(-4, 4));
                 Instantiate(GoldEnemy, Pos, Quaternion.identity);
             }
         }

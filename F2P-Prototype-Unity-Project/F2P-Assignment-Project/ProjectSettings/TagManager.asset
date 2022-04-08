@@ -8,6 +8,7 @@ TagManager:
   - Range Weapon
   - Enemy
   - ShopUI
+  - Walls
   layers:
   - Default
   - TransparentFX

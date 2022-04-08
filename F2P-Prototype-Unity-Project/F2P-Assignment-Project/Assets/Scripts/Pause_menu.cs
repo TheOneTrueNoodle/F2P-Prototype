@@ -27,6 +27,6 @@ public class Pause_menu : MonoBehaviour
     public void ExitLevel()
     {
         Debug.Log("Exited Level");
-        SceneManager.LoadScene("ShopScene");
+        SceneManager.LoadScene("ShopScene", LoadSceneMode.Single);
     }
 }
