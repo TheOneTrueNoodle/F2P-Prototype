@@ -27,6 +27,7 @@ public class Player_Handler_Script : MonoBehaviour
     public TMP_Text HPDisp;
     public TMP_Text LVDisp;
     public TMP_Text XPDisp;
+    public TMP_Text GoldDisp;
 
     public Health_Bar_Script healthBar;
     public Health_Bar_Script XPBar;

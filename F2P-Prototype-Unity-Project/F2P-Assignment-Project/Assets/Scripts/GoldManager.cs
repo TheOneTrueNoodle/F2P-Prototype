@@ -5,17 +5,38 @@ using TMPro;
 
 public class GoldManager : MonoBehaviour
 {
-    public int GoldCount;
+    private static bool Exists;
+
+    public int GoldCount = 0;
 
     public TMP_Text GoldDisp;
 
-    private void Awake()
+    public GameObject UI;
+
+    void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(transform.gameObject);
+
+        if (!Exists)
+        {
+            Exists = true;
+            DontDestroyOnLoad(transform.gameObject);
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
     }
 
     private void Update()
     {
-        GoldDisp.text = GoldCount.ToString();
+        if(GoldDisp == null)
+        {
+            GoldDisp = FindObjectOfType<Player_Handler_Script>().GoldDisp;
+        }
+        else
+        {
+            GoldDisp.text = GoldCount.ToString();
+        }
     }
 }

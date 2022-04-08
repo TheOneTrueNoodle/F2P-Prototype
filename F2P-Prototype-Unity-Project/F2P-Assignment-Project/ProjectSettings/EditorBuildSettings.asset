@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Niamh Cringe Scene.unity
+    guid: e25726d836f05d94da2153c61dc7a1a1
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: e57f106113f814a45946b73194d9c7b7

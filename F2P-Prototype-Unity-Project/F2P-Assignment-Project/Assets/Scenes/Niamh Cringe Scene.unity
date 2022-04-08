@@ -12968,17 +12968,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &1337759347 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3135598567120409923, guid: d8a63f5a368d20346a522147b795729b, type: 3}
-  m_PrefabInstance: {fileID: 1249036473}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1472222721
 GameObject:
   m_ObjectHideFlags: 0
@@ -18240,67 +18229,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5179367, y: 18.195984}
   m_EdgeRadius: 0
---- !u!1001 &1804847169
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8309288647890723490, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: GoldDisp
-      value: 
-      objectReference: {fileID: 1337759347}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.7631605
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.3303816
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.179403
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723491, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309288647890723492, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
-      propertyPath: m_Name
-      value: GoldManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4ddd597437e00fe4ab0b70fe83a6d601, type: 3}
 --- !u!1 &1866780108
 GameObject:
   m_ObjectHideFlags: 0

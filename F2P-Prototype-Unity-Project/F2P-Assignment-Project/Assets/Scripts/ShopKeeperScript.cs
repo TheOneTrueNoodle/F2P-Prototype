@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopKeeperScript : MonoBehaviour
 {
     public Player_Controls pInput;
-    public Canvas ShopUI;
+    public GameObject ShopUI;
 
     public GameObject PlayerUI;
 
@@ -18,11 +18,6 @@ public class ShopKeeperScript : MonoBehaviour
         pInput.Gameplay.Interact.performed += _ => OpenShop();
     }
 
-    public void Start()
-    {
-
-    }
-
     public void OpenShop()
     {
         if (InRange == true)
@@ -32,8 +27,8 @@ public class ShopKeeperScript : MonoBehaviour
                 ShopOpen = true;
                 Time.timeScale = 0f;
                 FindObjectOfType<Player_Movement_Script>().isPaused = true;
-
-                ShopUI.gameObject.SetActive(true);
+                ShopUI = FindObjectOfType<GoldManager>().UI;
+                ShopUI.SetActive(true);
                 PlayerUI.SetActive(false);
             }
             else
@@ -42,7 +37,8 @@ public class ShopKeeperScript : MonoBehaviour
                 Time.timeScale = 1f;
                 FindObjectOfType<Player_Movement_Script>().isPaused = false;
 
-                ShopUI.gameObject.SetActive(false);
+                ShopUI = FindObjectOfType<GoldManager>().UI;
+                ShopUI.SetActive(false);
                 PlayerUI.SetActive(true);
             }
         }
